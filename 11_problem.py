@@ -28,33 +28,59 @@ wombocombo = list(itertools.permutations(range(20), 2))
 #wombocombo is a list of all possible coordinates in a 20x20 grid
 for i in range(20):
 	wombocombo.append((i,i))
-print 'finished calculating the coordinates list'
 diagonal_l_to_r = []
 diagonal_r_to_l = []
 vertical = []
 horizontal = []
 for pos in wombocombo:
-	print pos
 	temp = []
-	for i in range(5):
+	for i in range(4):
 		temp.append((pos[0]+i,pos[1]))
-	if(pos[0] <= 15): vertical.append(temp)
+	if(pos[0] <= 16): vertical.append(temp)
 	temp = []
-	for i in range(5):
+	for i in range(4):
 		temp.append((pos[0],pos[1]+i))
-	if(pos[1] <= 15): horizontal.append(temp)
+	if(pos[1] <= 16): horizontal.append(temp)
 	temp = []
-	for i in range(5):
+	for i in range(4):
 		temp.append((pos[0]+i,pos[1]+i))
-	if(pos[0] <= 15 & pos[1] <= 15): diagonal_r_to_l.append(temp)
+	if(pos[0] <= 16 & pos[1] <= 16): diagonal_r_to_l.append(temp)
 	temp = []
-	for i in range(5):
+	for i in range(4):
 		temp.append((pos[0]+i,pos[1]-i))
-	if(pos[0] <= 15 & pos[1] >= 4): diagonal_l_to_r.append(temp)
+	if(pos[0] <= 16 & pos[1] >= 3): diagonal_l_to_r.append(temp)
 
 products = []
-#print grid[horizontal[1][0]][horizontal[1,1]]
-print grid[1][2]
-#for subset in vertical:
-	#print grid[subset]
-	##products.appendj)
+#print horizontal[1] # gets a set of five coordinates
+#print horizontal[1][1] # gets one coordinate set
+#print horizontal[1][1][1] # gets a single coordinate
+for subset in vertical:
+	total = 1
+	for i in range(4):
+		total = total * grid[subset[i][0]][subset[i][0]]
+	products.append(total)
+	print total
+
+for subset in horizontal:
+	total = 1
+	for i in range(4):
+		total = total * grid[subset[i][0]][subset[i][0]]
+	products.append(total)
+	print total
+
+for subset in diagonal_l_to_r:
+	total = 1
+	for i in range(4):
+		total = total * grid[subset[i][0]][subset[i][0]]
+	products.append(total)
+	print total
+
+for subset in diagonal_r_to_l:
+	total = 1
+	for i in range(4):
+		total = total * grid[subset[i][0]][subset[i][0]]
+	products.append(total)
+	print total
+
+products = sorted(products)
+print products[-1]

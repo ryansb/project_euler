@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # Author: Ryan Brown
-#i Description: 
+# Description: find the 10001st prime
 
 
 def gen_primes():
