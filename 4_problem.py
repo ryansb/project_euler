@@ -9,4 +9,4 @@ for pair in list(itertools.permutations(three_digits, 2)):
 	if(str(pal)==str(pal)[::-1]):
 		palin.append(pal)
 palin.sort()
-print palin
+print palin[-1]
